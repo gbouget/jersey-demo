@@ -1,6 +1,7 @@
 package com.gbo.jerseydemo.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -73,10 +74,11 @@ public class ClientServiceStub implements ClientService {
 	@Override
 	public void supprimer(Integer idClient) {
 		if (idClient != null) {
-			for (final Client client : this.clients) {
-				if (idClient == client.getId()) {
-					this.clients.remove(client);
-				}
+			for (Iterator<Client> it = clients.iterator(); it.hasNext(); ) {
+				Client client = it.next();
+			    if (idClient == client.getId()) {
+			        it.remove();
+			    }
 			}
 		}
 	}
