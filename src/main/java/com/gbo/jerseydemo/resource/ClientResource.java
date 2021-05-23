@@ -49,6 +49,7 @@ public class ClientResource {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	// curl windows : Invoke-WebRequest -UseBasicParsing http://localhost:8080/api/client -ContentType "application/json" -Method POST -Body '{"nom":"A","prenom":"B"}'
 	public Response ajouter(final Client client) throws URISyntaxException {
 		final Integer id = clientService.ajouter(client);
 		final URI uri = new URI("/client/" + id);
