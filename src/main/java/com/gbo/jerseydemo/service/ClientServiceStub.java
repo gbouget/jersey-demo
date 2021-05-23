@@ -49,8 +49,12 @@ public class ClientServiceStub implements ClientService {
 	}
 
 	@Override
-	public void ajouter(Client client) {
-		this.clients.add(client);
+	public Integer ajouter(Client client) {
+		final Client nouveauClient = Client.fabriquer();
+		nouveauClient.setNom(client.getNom());
+		nouveauClient.setPrenom(client.getPrenom());
+		this.clients.add(nouveauClient);
+		return nouveauClient.getId();
 	}
 
 	@Override
