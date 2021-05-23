@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -64,4 +65,11 @@ public class ClientResource {
 		 return Response.status(Response.Status.OK).build();
 	}
 
+	@DELETE
+	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response supprimer(@PathParam("id") final Integer id) {
+		clientService.supprimer(id);
+		return Response.status(Response.Status.OK).build();
+	}
 }
