@@ -1,8 +1,12 @@
 package com.gbo.jerseydemo.resource;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,5 +47,13 @@ public class ClientResource {
 	      .build();
 	}
 	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response ajouter(final Client client) throws URISyntaxException {
+		final Integer id = clientService.ajouter(client);
+		final URI uri = new URI("/client/" + id);
+		return Response.created(uri).build();
+	}
+		
 
 }
